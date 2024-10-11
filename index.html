@@ -173,9 +173,9 @@
         <div class="tab-container">
             <div class="tab">
                 <button class="tablinks" onclick="openTab(event, 'Structures')">Structures<span class="arrow">&#9650;</span></button>
-                <button class="tablinks" onclick="openTab(event, 'Templates')">Templates<span class="arrow">&#9650;</span></button>
+                <button class="tablinks" onclick="openTabWithPassword(event, 'Templates')">Templates<span class="arrow">&#9650;</span></button>
                 <button class="tablinks" onclick="openTab(event, 'Addons')">Addons<span class="arrow">&#9650;</span></button>
-                <button class="tablinks" onclick="openTab(event, 'Worlds')">Worlds<span class="arrow">&#9650;</span></button>
+                <button class="tablinks" onclick="openTabWithPassword(event, 'Worlds')">Worlds<span class="arrow">&#9650;</span></button>
             </div>
         </div>
 
@@ -399,5 +399,47 @@ function openTab(evt, tabName) {
     }
 </script>
 
+
+<!-- Password Modal -->
+<div id="passwordModal" class="modal" style="display:none; position: fixed; z-index: 1; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgb(0,0,0); background-color: rgba(0,0,0,0.4);">
+  <div style="background-color: #fefefe; margin: 15% auto; padding: 20px; border: 1px solid #888; width: 80%; max-width: 300px; text-align: center;">
+    <h2>Enter Password</h2>
+    <input type="password" id="passwordInput" style="width: 100%; padding: 10px; margin: 10px 0;">
+    <br>
+    <button onclick="checkPassword()">Submit</button>
+    <button onclick="closeModal()">Close</button>
+    <p id="errorMessage" style="color: red; display: none;">Incorrect password, try again.</p>
+  </div>
+</div>
+
+<script>
+    var correctPassword = "Jul1@nL33555^^.";
+    var currentTab = "";
+
+    function openTabWithPassword(evt, tabName) {
+        if (tabName === 'Worlds' || tabName === 'Templates') {
+            currentTab = tabName;
+            document.getElementById('passwordModal').style.display = 'block';
+        } else {
+            openTab(evt, tabName);  // Call the original function if not protected
+        }
+    }
+
+    function checkPassword() {
+        var enteredPassword = document.getElementById('passwordInput').value;
+        if (enteredPassword === correctPassword) {
+            document.getElementById('passwordModal').style.display = 'none';
+            openTab(event, currentTab);
+        } else {
+            document.getElementById('errorMessage').style.display = 'block';
+        }
+    }
+
+    function closeModal() {
+        document.getElementById('passwordModal').style.display = 'none';
+    }
+</script>
+
 </body>
+
 </html>
