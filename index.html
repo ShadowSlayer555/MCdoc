@@ -446,6 +446,18 @@
         document.getElementById('passwordModal').style.display = 'none'; // Close the modal
         document.getElementById('errorMessage').style.display = 'none'; // Hide error message when closing
     }
+
+    // Fix for "View Downloads" and "View Guide" toggle buttons
+    function toggleGuide(guideId, button) {
+        var guide = document.getElementById(guideId);
+        if (guide.style.display === "none" || guide.style.display === "") {
+            guide.style.display = "block";
+            button.querySelector('.arrow').classList.add('down');  // Rotate arrow
+        } else {
+            guide.style.display = "none";
+            button.querySelector('.arrow').classList.remove('down');  // Reset arrow
+        }
+    }
 </script>
 
 <!-- Password Modal -->
