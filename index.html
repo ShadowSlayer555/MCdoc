@@ -176,7 +176,8 @@
                 <button class="tablinks" onclick="openTabWithPassword(event, 'Templates')">Templates<span class="arrow">&#9650;</span></button>
                 <button class="tablinks" onclick="openTab(event, 'Addons')">Addons<span class="arrow">&#9650;</span></button>
                 <button class="tablinks" onclick="openTabWithPassword(event, 'Worlds')">Worlds<span class="arrow">&#9650;</span></button>
-            </div>
+		<button class="tablinks" onclick="openTab(event, 'Experiments')">Experiments<span class="arrow">&#9650;</span></button>
+	    </div>
         </div>
 
         <!-- Tab content -->
@@ -330,7 +331,32 @@
                 <img src="Images/Behavior.png" alt="Behavior Packs" class="guide-image">
             </div>
         </div>
+	
+		<div id="Experiments" class="tabcontent">
+   	 <h2>Experiment Downloads</h2>
+  	  <button class="guide-toggle" onclick="toggleGuide('ExperimentsDownloads', this)">View Downloads<span class="arrow">&#9650;</span></button>
+ 	   <button class="guide-toggle" onclick="toggleGuide('ExperimentsGuide', this)">View Installation Guide<span class="arrow">&#9650;</span></button>
 
+   	 <div id="ExperimentsDownloads" class="section" style="display: none;">
+   	     <div class="download-box">
+           	 <img src="Images/Experiment1.png" alt="Download 1">
+            	<a href="MCworld/download1.mcworld" class="download-button" download>Download Experiment 1</a>
+        	</div>
+        	<div class="download-box">
+            	<img src="Images/Experiment2.png" alt="Download 2">
+           	 <a href="MCworld/download2.mcworld" class="download-button" download>Download Experiment 2</a>
+        	</div>
+   	 </div>
+
+   	 <div id="ExperimentsGuide" class="section" style="display: none;">
+        	<h3>Installation Guide</h3>
+        	<p>Step 1) Download the .mcworld file.</p>
+        	<p>Step 2) Open Minecraft and import the downloaded file.</p>
+        	<p>Step 3) Enjoy exploring the experimental worlds!</p>
+    	</div>
+	</div>
+
+	
         <div id="Worlds" class="tabcontent">
             <h2>World Downloads</h2>
             <button class="guide-toggle" onclick="toggleGuide('WorldsDownloads', this)">View Downloads<span class="arrow">&#9650;</span></button>
