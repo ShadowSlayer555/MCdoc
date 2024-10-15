@@ -397,32 +397,35 @@
 </div>
 
 <script>
-function openTab(evt, tabName) {
-    var tabcontent = document.getElementsByClassName("tabcontent");
-    for (var i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].classList.remove('active');
-    }
+    var correctPasswords = {
+        'Worlds': '2069845^^.',
+        'Templates': '2069845^^.',
+        'Experiments': 'ShadowSlayer555'
+    };
+    var currentTab = "";
 
-    var tablinks = document.getElementsByClassName("tablinks");
-    for (var i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "");
-        tablinks[i].querySelector('.arrow').classList.remove('down');  // Reset all arrows
-    }
-
-    document.getElementById(tabName).classList.add('active');
-    evt.currentTarget.className += " active";
-    evt.currentTarget.querySelector('.arrow').classList.add('down');  // Rotate arrow for active tab
-}
-
-    function toggleGuide(guideId, button) {
-        var guide = document.getElementById(guideId);
-        if (guide.style.display === "none") {
-            guide.style.display = "block";
-            button.querySelector('.arrow').classList.add('down');
+    function openTabWithPassword(evt, tabName) {
+        if (tabName === 'Worlds' || tabName === 'Templates' || tabName === 'Experiments') {
+            currentTab = tabName;
+            document.getElementById('passwordModal').style.display = 'block';
         } else {
-            guide.style.display = "none";
-            button.querySelector('.arrow').classList.remove('down');
+            openTab(evt, tabName);  // Call the original function if not protected
         }
+    }
+
+    function checkPassword() {
+        var enteredPassword = document.getElementById('passwordInput').value;
+        if (enteredPassword === correctPasswords[currentTab]) {
+            document.getElementById('passwordModal').style.display = 'none';
+            openTab(event, currentTab);
+        } else {
+            document.getElementById('errorMessage').style.display = 'block';
+        }
+    }
+
+    function closeModal() {
+        document.getElementById('passwordModal').style.display = 'none'; // Close the modal
+        document.getElementById('errorMessage').style.display = 'none'; // Hide error message when closing
     }
 </script>
 
