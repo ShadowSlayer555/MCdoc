@@ -173,10 +173,11 @@
         <div class="tab-container">
             <div class="tab">
                 <button class="tablinks" onclick="openTab(event, 'Structures')">Structures<span class="arrow">&#9650;</span></button>
-                <button class="tablinks" onclick="openTabWithPassword(event, 'Templates')">Templates<span class="arrow">&#9650;</span></button>
-                <button class="tablinks" onclick="openTab(event, 'Addons')">Addons<span class="arrow">&#9650;</span></button>
-                <button class="tablinks" onclick="openTabWithPassword(event, 'Worlds')">Worlds<span class="arrow">&#9650;</span></button>
-		<button class="tablinks" onclick="openTab(event, 'Experiments')">Experiments<span class="arrow">&#9650;</span></button>
+		<button class="tablinks" onclick="openTabWithPassword(event, 'Templates')">Templates<span class="arrow">&#9650;</span></button>
+		<button class="tablinks" onclick="openTab(event, 'Addons')">Addons<span class="arrow">&#9650;</span></button>
+		<button class="tablinks" onclick="openTabWithPassword(event, 'Worlds')">Worlds<span class="arrow">&#9650;</span></button>
+		<button class="tablinks" onclick="openTabWithPassword(event, 'Experiments')">Experiments<span class="arrow">&#9650;</span></button>
+
 	    </div>
         </div>
 
@@ -439,31 +440,32 @@ function openTab(evt, tabName) {
 </div>
 
 <script>
-    var correctPassword = "2069845^^.";
-    var currentTab = "";
+    var correctPasswords = {
+    'Worlds': '2069845^^.',
+    'Templates': '2069845^^.',
+    'Experiments': 'ShadowSlayer555'
+};
+var currentTab = "";
 
-    function openTabWithPassword(evt, tabName) {
-        if (tabName === 'Worlds' || tabName === 'Templates') {
-            currentTab = tabName;
-            document.getElementById('passwordModal').style.display = 'block';
-        } else {
-            openTab(evt, tabName);  // Call the original function if not protected
-        }
+function openTabWithPassword(evt, tabName) {
+    if (tabName === 'Worlds' || tabName === 'Templates' || tabName === 'Experiments') {
+        currentTab = tabName;
+        document.getElementById('passwordModal').style.display = 'block';
+    } else {
+        openTab(evt, tabName);  // Call the original function if not protected
     }
+}
 
-    function checkPassword() {
-        var enteredPassword = document.getElementById('passwordInput').value;
-        if (enteredPassword === correctPassword) {
-            document.getElementById('passwordModal').style.display = 'none';
-            openTab(event, currentTab);
-        } else {
-            document.getElementById('errorMessage').style.display = 'block';
-        }
-    }
-
-    function closeModal() {
+function checkPassword() {
+    var enteredPassword = document.getElementById('passwordInput').value;
+    if (enteredPassword === correctPasswords[currentTab]) {
         document.getElementById('passwordModal').style.display = 'none';
+        openTab(event, currentTab);
+    } else {
+        document.getElementById('errorMessage').style.display = 'block';
     }
+}
+
 </script>
 
 </body>
