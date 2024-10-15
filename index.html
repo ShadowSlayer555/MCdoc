@@ -334,28 +334,50 @@
         </div>
 	
 		<div id="Experiments" class="tabcontent">
-   	 <h2>Experiment Downloads</h2>
-  	  <button class="guide-toggle" onclick="toggleGuide('ExperimentsDownloads', this)">View Downloads<span class="arrow">&#9650;</span></button>
- 	   <button class="guide-toggle" onclick="toggleGuide('ExperimentsGuide', this)">View Installation Guide<span class="arrow">&#9650;</span></button>
+    <h2>Experiment Downloads</h2>
+    
+    <!-- Existing View buttons -->
+    <button class="guide-toggle" onclick="toggleGuide('ExperimentsDownloads', this)">View Downloads<span class="arrow">&#9650;</span></button>
+    <button class="guide-toggle" onclick="toggleGuide('ExperimentsGuide', this)">View Installation Guide<span class="arrow">&#9650;</span></button>
+    
+    <!-- New View Experimental Mods button -->
+    <button class="guide-toggle" onclick="toggleGuide('ExperimentsMods', this)">View Experimental Mods<span class="arrow">&#9650;</span></button>
+    
+    <!-- Existing Downloads section -->
+    <div id="ExperimentsDownloads" class="section" style="display: none;">
+        <div class="download-box">
+            <img src="Images/Experiment1.png" alt="Download 1">
+            <a href="MCworld/download1.mcworld" class="download-button" download>Download Experiment 1</a>
+        </div>
+        <div class="download-box">
+            <img src="Images/Experiment2.png" alt="Download 2">
+            <a href="MCworld/download2.mcworld" class="download-button" download>Download Experiment 2</a>
+        </div>
+    </div>
 
-   	 <div id="ExperimentsDownloads" class="section" style="display: none;">
-   	     <div class="download-box">
-           	 <img src="Images/Experiment1.png" alt="Download 1">
-            	<a href="MCworld/download1.mcworld" class="download-button" download>Download Experiment 1</a>
-        	</div>
-        	<div class="download-box">
-            	<img src="Images/Experiment2.png" alt="Download 2">
-           	 <a href="MCworld/download2.mcworld" class="download-button" download>Download Experiment 2</a>
-        	</div>
-   	 </div>
+    <!-- Existing Guide section -->
+    <div id="ExperimentsGuide" class="section" style="display: none;">
+        <h3>Installation Guide</h3>
+        <p>Step 1) Download the .mcworld file.</p>
+        <p>Step 2) Open Minecraft and import the downloaded file.</p>
+        <p>Step 3) Enjoy exploring the experimental worlds!</p>
+    </div>
 
-   	 <div id="ExperimentsGuide" class="section" style="display: none;">
-        	<h3>Installation Guide</h3>
-        	<p>Step 1) Download the .mcworld file.</p>
-        	<p>Step 2) Open Minecraft and import the downloaded file.</p>
-        	<p>Step 3) Enjoy exploring the experimental worlds!</p>
-    	</div>
-	</div>
+    <!-- New Experimental Mods section -->
+    <div id="ExperimentsMods" class="section" style="display: none;">
+        <h3>Experimental Mods</h3>
+        <p>Here you can find experimental mods that add new features to Minecraft.</p>
+        <div class="download-box">
+            <img src="Images/Mod1.png" alt="Mod 1">
+            <a href="MCmod/Mod1.mcaddon" class="download-button" download>Download Experimental Mod 1</a>
+        </div>
+        <div class="download-box">
+            <img src="Images/Mod2.png" alt="Mod 2">
+            <a href="MCmod/Mod2.mcaddon" class="download-button" download>Download Experimental Mod 2</a>
+        </div>
+    </div>
+</div>
+
 
 	
         <div id="Worlds" class="tabcontent">
