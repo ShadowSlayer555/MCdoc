@@ -52,13 +52,16 @@
 
 /* Style specifically for the Secret button */
 .secret-button {
-    position: absolute; /* Puts it in the top-right corner */
+    position: absolute; /* Positions it in the top-right corner */
     top: 10px;
     right: 10px;
-    background-color: transparent; /* Makes the button invisible */
-    border: none;
-    color: inherit; /* Keeps text color consistent */
+    background-color: transparent; /* Makes the button background invisible */
+    border: none; /* Removes any border */
+    color: transparent; /* Makes the text invisible */
     cursor: pointer;
+    width: 50px; /* Define a width to keep it clickable */
+    height: 50px; /* Define a height to keep it clickable */
+    opacity: 0; /* Makes the entire button invisible */
 }
         /* Create an active/current tab link */
         .tab button.active {
