@@ -26,30 +26,40 @@
             margin: 20px 0;
         }
 
-        /* Style the tab links */
-        .tab {
-            overflow: hidden;
-            background-color: #f1f1f1;
-        }
+       /* Style the tab links */
+.tab {
+    overflow: hidden;
+    background-color: #f1f1f1;
+}
 
-        .tab button {
-            background-color: inherit;
-            float: left;
-            border: none;
-            outline: none;
-            cursor: pointer;
-            padding: 14px 30px; /* Increased right padding */
-            transition: 0.3s;
-            font-family: 'Press Start 2P', cursive; /* Font for tab buttons */
-            position: relative; /* For positioning the arrow */
-            margin-right: 5px; /* Space between buttons */
-        }
+.tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 30px; /* Increased right padding */
+    transition: 0.3s;
+    font-family: 'Press Start 2P', cursive; /* Font for tab buttons */
+    position: relative; /* For positioning the arrow */
+    margin-right: 5px; /* Space between buttons */
+}
 
-        .tab button:hover {
-            background-color: #4CAF50; /* Minecraft green */
-            color: white;
-        }
+.tab button:hover {
+    background-color: #4CAF50; /* Minecraft green */
+    color: white;
+}
 
+/* Style specifically for the Secret button */
+.secret-button {
+    position: absolute; /* Puts it in the top-right corner */
+    top: 10px;
+    right: 10px;
+    background-color: transparent; /* Makes the button invisible */
+    border: none;
+    color: inherit; /* Keeps text color consistent */
+    cursor: pointer;
+}
         /* Create an active/current tab link */
         .tab button.active {
             background-color: #ccc;
@@ -177,7 +187,10 @@
 		<button class="tablinks" onclick="openTab(event, 'Addons')">Addons<span class="arrow">&#9650;</span></button>
 		<button class="tablinks" onclick="openTabWithPassword(event, 'Worlds')">Worlds<span class="arrow">&#9650;</span></button>
 		<button class="tablinks" onclick="openTabWithPassword(event, 'Experiments')">Experiments<span class="arrow">&#9650;</span></button>
-
+		<button class="tablinks secret-button" onclick="openTabWithPassword(event, 'Secret')">
+  		  Secret<span class="arrow">&#9650;</span>
+		</button>
+	    
 	    </div>
         </div>
 
@@ -533,31 +546,36 @@
 
 <script>
     var correctPasswords = {
-    'Worlds': 'ShadowSlayer555',
-    'Templates': 'JulianLee',
-    'Experiments': '2069845'
-};
-var currentTab = "";
+        'Worlds': 'ShadowSlayer555',
+        'Templates': 'JulianLee',
+        'Experiments': '2069845',
+        'Secret': 'Jul1@nL33555^^'  // Add the Secret tab password here
+    };
+    var currentTab = "";
 
-function openTabWithPassword(evt, tabName) {
-    if (tabName === 'Worlds' || tabName === 'Templates' || tabName === 'Experiments') {
-        currentTab = tabName;
-        document.getElementById('passwordModal').style.display = 'block';
-    } else {
-        openTab(evt, tabName);  // Call the original function if not protected
+    function openTabWithPassword(evt, tabName) {
+        if (correctPasswords.hasOwnProperty(tabName)) {  // Checks if tab requires a password
+            currentTab = tabName;
+            document.getElementById('passwordModal').style.display = 'block';
+        } else {
+            openTab(evt, tabName);  // Opens tab if not password-protected
+        }
     }
-}
 
-function checkPassword() {
-    var enteredPassword = document.getElementById('passwordInput').value;
-    if (enteredPassword === correctPasswords[currentTab]) {
+    function checkPassword() {
+        var enteredPassword = document.getElementById('passwordInput').value;
+        if (enteredPassword === correctPasswords[currentTab]) {
+            document.getElementById('passwordModal').style.display = 'none';
+            openTab(event, currentTab);
+        } else {
+            document.getElementById('errorMessage').style.display = 'block';
+        }
+    }
+
+    function closeModal() {
         document.getElementById('passwordModal').style.display = 'none';
-        openTab(event, currentTab);
-    } else {
-        document.getElementById('errorMessage').style.display = 'block';
+        document.getElementById('errorMessage').style.display = 'none';
     }
-}
-
 </script>
 
 </body>
