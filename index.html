@@ -550,10 +550,12 @@
         'Secret': 'Jul1@nL33555^^'  // Password for Secret tab
     };
     var currentTab = "";
+    var currentEvent = null;
 
     function openTabWithPassword(evt, tabName) {
-        if (correctPasswords.hasOwnProperty(tabName)) {
+        if (correctPasswords.hasOwnProperty(tabName)) {  // Checks if tab requires a password
             currentTab = tabName;
+            currentEvent = evt;
             document.getElementById('passwordModal').style.display = 'block';
         } else {
             openTab(evt, tabName);
@@ -564,7 +566,7 @@
         var enteredPassword = document.getElementById('passwordInput').value;
         if (enteredPassword === correctPasswords[currentTab]) {
             document.getElementById('passwordModal').style.display = 'none';
-            openTab(event, currentTab);
+            openTab(currentEvent, currentTab);
         } else {
             document.getElementById('errorMessage').style.display = 'block';
         }
@@ -591,7 +593,19 @@
         document.getElementById('passwordModal').style.display = 'none';
         document.getElementById('errorMessage').style.display = 'none';
     }
+
+    function toggleGuide(guideId, button) {
+        var guide = document.getElementById(guideId);
+        if (guide.style.display === "none" || guide.style.display === "") {
+            guide.style.display = "block";
+            button.querySelector('.arrow').classList.add('down');
+        } else {
+            guide.style.display = "none";
+            button.querySelector('.arrow').classList.remove('down');
+        }
+    }
 </script>
+
 
 </body>
 
